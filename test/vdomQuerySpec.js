@@ -56,4 +56,14 @@ describe('vdomQuery(render)', function() {
     })
   });
 
+  describe('wrap in self', function(){
+    it('can call vdomQuery multiple times', function(){
+      function render() {
+        return h('.x');
+      }
+
+      var f = vdomQuery(vdomQuery(render));
+      expect(f.attr('class')).to.equal('x');
+    });
+  });
 });

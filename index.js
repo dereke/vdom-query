@@ -231,7 +231,12 @@ function appendSelector(selector, addition) {
 }
 
 module.exports = function(render) {
-  return dollar(function() {
-    return [render()];
-  }).find(":root");
+  if (render.createIterator) {
+    return render;
+  }
+  else {
+    return dollar(function() {
+      return [render()];
+    }).find(":root");
+  }
 }
