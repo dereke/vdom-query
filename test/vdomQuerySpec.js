@@ -66,4 +66,17 @@ describe('vdomQuery(render)', function() {
       expect(f.attr('class')).to.equal('x');
     });
   });
+
+  describe('toArray', function(){
+    it('creates an array of elements', function(){
+      function render() {
+        return h('.x');
+      }
+
+      var f = vdomQuery(render);
+      var array = f.toArray();
+      expect(array.length).to.equal(1);
+      expect(array[0].tagName).to.equal('DIV');
+    });
+  });
 });

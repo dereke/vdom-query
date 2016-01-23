@@ -128,6 +128,14 @@ var dollar = vdollar.extend({
     return this.get().length;
   },
 
+  toArray: function() {
+    var array = [];
+    this.each(function(el){
+      array.push(el);
+    });
+    return array;
+  },
+
   startOfChain: function() {
     var parent = this.createIterator();
     while (parent.parent) {
